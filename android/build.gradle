@@ -18,11 +18,11 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
-    compileSdkVersion safeExtGet('ThermalPrinter_compileSdkVersion', 29)
-    buildToolsVersion safeExtGet('ThermalPrinter_buildToolsVersion', '29.0.2')
+    compileSdkVersion safeExtGet('ThermalPrinter_compileSdkVersion', 31)
+    buildToolsVersion safeExtGet('ThermalPrinter_buildToolsVersion', '31.0.0')
     defaultConfig {
         minSdkVersion safeExtGet('ThermalPrinter_minSdkVersion', 21)
-        targetSdkVersion safeExtGet('ThermalPrinter_targetSdkVersion', 29)
+        targetSdkVersion safeExtGet('ThermalPrinter_targetSdkVersion', 31)
         versionCode 1
         versionName "1.0"
 

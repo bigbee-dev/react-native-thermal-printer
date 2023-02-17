@@ -62,3 +62,5 @@ lib/
 package
 
 example/yarn.lock
+
+*.hprof
