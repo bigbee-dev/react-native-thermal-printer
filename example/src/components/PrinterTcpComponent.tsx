@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
-import { Style } from '../core/Style';
+import { openPicker } from 'react-native-image-crop-picker';
 import ThermalPrinter from 'react-native-thermal-printer';
+import { Style } from '../core/Style';
 
 const PrinterTcpComponent: React.FC = React.memo(() => {
   const [ip, setIp] = React.useState<string>('192.168.1.42');
@@ -13,16 +14,16 @@ const PrinterTcpComponent: React.FC = React.memo(() => {
     const start = new Date().getTime();
     try {
       setResult('');
+      const res = await openPicker({
+        mediaType: 'photo',
+        multiple: false,
+      });
       await ThermalPrinter.printTcp({
         ip: ip,
         port: parseInt(port, 10),
-        payload:
-          "[C]<u><font size='big'>" +
-          'Test success !' +
-          '</font></u>\n' +
-          '[L] \n' +
-          '[L] \n',
+        payload: `[C]<img>${res.path}</img>\n` + `[C]<img>${res.path}</img>`,
         timeout: parseInt(timeout, 10),
+        autoCut: true,
       });
       setResult(
         'Success ! in ' + (new Date().getTime() - start) + ' milliseconds'
